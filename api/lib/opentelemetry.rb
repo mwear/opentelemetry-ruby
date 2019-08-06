@@ -12,6 +12,7 @@ require 'opentelemetry/internal'
 require 'opentelemetry/metrics'
 require 'opentelemetry/resources'
 require 'opentelemetry/trace'
+require 'opentelemetry/instrumentation'
 require 'opentelemetry/version'
 
 # OpenTelemetry provides global accessors for telemetry objects
