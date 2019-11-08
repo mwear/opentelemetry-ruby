@@ -18,7 +18,8 @@ require 'opentelemetry/version'
 module OpenTelemetry
   extend self
 
-  attr_writer :tracer_factory, :meter_factory, :correlation_context_manager
+  attr_writer :tracer_factory, :meter_factory, :correlation_context_manager,
+              :baggage_manager
 
   attr_accessor :logger
 
@@ -35,9 +36,16 @@ module OpenTelemetry
   end
 
   # @return [Object, DistributedContext::CorrelationContextManager] registered
-  #   correlation context manager or a default no-op implementation of the manager.
+  #   correlation context manager or a default noop implementation of the manager.
   def correlation_context_manager
     @correlation_context_manager ||= DistributedContext::CorrelationContextManager.new
+  end
+
+  # @return [Object, Baggage::Manager] registered
+  #   baggage manager or a default no-op implementation of the manager.
+  def baggage_manager
+    # @todo: consider making Baggage::Manager a class (not a module)
+    @baggage_manager ||= Baggage::Manager
   end
 
   self.logger = Logger.new(STDOUT)
