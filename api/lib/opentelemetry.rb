@@ -48,5 +48,10 @@ module OpenTelemetry
     @baggage_manager ||= Baggage::Manager
   end
 
+  # @return [Context::Propagation::Propagation] an instance of the propagation API
+  def propagation
+    @propagation ||= Context::Propagation::Propagation.new
+  end
+
   self.logger = Logger.new(STDOUT)
 end
