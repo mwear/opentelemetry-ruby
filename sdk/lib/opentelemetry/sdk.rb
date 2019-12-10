@@ -13,7 +13,6 @@ module OpenTelemetry
 end
 
 require 'opentelemetry/sdk/baggage'
-require 'opentelemetry/sdk/distributed_context'
 require 'opentelemetry/sdk/internal'
 require 'opentelemetry/sdk/resources'
 require 'opentelemetry/sdk/trace'
